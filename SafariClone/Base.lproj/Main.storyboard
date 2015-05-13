@@ -17,44 +17,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os8-SJ-9ca">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjI-H1-bsY">
+                                <rect key="frame" x="16" y="20" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="O0n-Nt-Xwu"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="sTN-Be-tjQ"/>
                                 </connections>
-                            </webView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bb3-JL-NU7">
-                                <rect key="frame" x="300" y="321" width="20" height="20"/>
+                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bb3-JL-NU7">
+                                <rect key="frame" x="290" y="319" width="30" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="0aL-iK-SyA"/>
                                     <constraint firstAttribute="height" constant="20" id="kc0-JK-brd"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjI-H1-bsY">
-                                <rect key="frame" x="16" y="20" width="568" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="q2v-wb-ghh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Os8-SJ-9ca">
+                                <rect key="frame" x="0.0" y="58" width="600" height="499"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="sTN-Be-tjQ"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="O0n-Nt-Xwu"/>
                                 </connections>
-                            </textField>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THT-jg-POe">
+                                <rect key="frame" x="0.0" y="557" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="&lt;" id="hQ6-dR-dCK">
+                                        <connections>
+                                            <action selector="onBackButtonPressed:" destination="vXZ-lx-hvc" id="zsp-da-ABf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="&gt;" id="mC3-1P-OdF">
+                                        <connections>
+                                            <action selector="onForwardButtonPressed:" destination="vXZ-lx-hvc" id="hGx-uD-TuU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="stop" id="Nyq-82-LAS">
+                                        <connections>
+                                            <action selector="onStopLoadingPressed:" destination="vXZ-lx-hvc" id="5xz-er-Elx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="5V0-5r-Kyg">
+                                        <connections>
+                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" id="fc8-F9-XsT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Bb3-JL-NU7" secondAttribute="centerX" id="HNa-Qw-5Vf"/>
-                            <constraint firstItem="Os8-SJ-9ca" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="OLb-dQ-kcT"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Os8-SJ-9ca" secondAttribute="bottom" id="RR7-7y-YO5"/>
-                            <constraint firstItem="EjI-H1-bsY" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Xdr-mv-h6A"/>
-                            <constraint firstItem="EjI-H1-bsY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="cd3-GO-ERe"/>
-                            <constraint firstItem="Os8-SJ-9ca" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="eAE-xB-RsI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Os8-SJ-9ca" secondAttribute="trailing" constant="-16" id="k0u-lO-CpM"/>
-                            <constraint firstAttribute="centerX" secondItem="EjI-H1-bsY" secondAttribute="centerX" id="y5B-k3-pDw"/>
-                            <constraint firstAttribute="centerY" secondItem="Bb3-JL-NU7" secondAttribute="centerY" id="yDO-w4-ZOc"/>
-                            <constraint firstItem="EjI-H1-bsY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="z8a-Rb-Cux"/>
+                            <constraint firstAttribute="centerX" secondItem="EjI-H1-bsY" secondAttribute="centerX" id="BJi-wH-hgw"/>
+                            <constraint firstItem="EjI-H1-bsY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ETP-yZ-lBI"/>
+                            <constraint firstItem="Os8-SJ-9ca" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="OuF-XU-eY3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Os8-SJ-9ca" secondAttribute="trailing" constant="-16" id="Vfj-WG-nVa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Os8-SJ-9ca" secondAttribute="trailing" constant="-16" id="WDQ-ej-xIA"/>
+                            <constraint firstItem="EjI-H1-bsY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="baX-NZ-t0z"/>
+                            <constraint firstItem="EjI-H1-bsY" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="c9o-d5-W5t"/>
+                            <constraint firstItem="Os8-SJ-9ca" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qIe-DG-R4K"/>
                         </constraints>
                     </view>
                     <connections>
@@ -64,6 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="244" y="210"/>
         </scene>
     </scenes>
 </document>

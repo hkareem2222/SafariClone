@@ -60,5 +60,23 @@
         [self goToURLString:@"http://www.mobilemakers.co"];
     }
 }
+- (IBAction)onBackButtonPressed:(UIBarButtonItem *)sender {
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+        sender.enabled = YES;
+    } else {
+        sender.enabled = NO;
+    }
+}
+- (IBAction)onForwardButtonPressed:(UIBarButtonItem *)sender {
+    [self.webView goForward];
+    [sender setEnabled:[self.webView canGoForward]];
+}
+- (IBAction)onStopLoadingPressed:(UIBarButtonItem *)sender {
+    [self.webView stopLoading];
+}
 
+- (IBAction)onReloadButtonPressed:(UIBarButtonItem *)sender {
+    [self.webView reload];
+}
 @end
