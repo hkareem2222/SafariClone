@@ -13,16 +13,19 @@
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewConstraint;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self goToURLString:@"http://www.google.com"];
+    [self goToURLString:@"http://www.espn.com"];
     self.webView.scrollView.delegate = self;
 
 
@@ -41,8 +44,13 @@
         [self goToURLString:textField.text];
         [textField resignFirstResponder];
         return YES;
+    } else if ([textField.text containsString:@"."]) {
+        NSString *updatedUrl = [NSString stringWithFormat:@"http://%@", textField.text];
+        [self goToURLString:updatedUrl];
+        [textField resignFirstResponder];
+        return YES;
     } else {
-        NSString *updatedUrl = [NSString stringWithFormat:@"http://www.%@", textField.text];
+        NSString *updatedUrl = [NSString stringWithFormat:@"https://www.google.com/#q=%@", textField.text];
         [self goToURLString:updatedUrl];
         [textField resignFirstResponder];
         return YES;
@@ -60,22 +68,23 @@
     NSString *currentURL = self.webView.request.URL.absoluteString;
     NSString *webTitle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.textField.text = currentURL;
+    self.navBar.topItem.title = webTitle;
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    UIAlertView *alert = [UIAlertView new];
-    alert.title = @"Load Failed!";
-    alert.message = error.localizedDescription;
-
-    [alert addButtonWithTitle:@"Dismiss"];
-    [alert addButtonWithTitle:@"Go home!"];
-    alert.delegate = self;
-    [alert show];
+//    UIAlertView *alert = [UIAlertView new];
+//    alert.title = @"Load Failed!";
+//    alert.message = error.localizedDescription;
+//
+//    [alert addButtonWithTitle:@"Dismiss"];
+//    [alert addButtonWithTitle:@"Go home!"];
+//    alert.delegate = self;
+//    [alert show];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        [self goToURLString:@"http://www.google.com"];
+        [self goToURLString:@"http://www.espn.com"];
     }
 }
 
@@ -101,12 +110,17 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"%f",scrollView.contentOffset.y);
+//    NSLog(@"%f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 50) {
-        self.textField.text = @" ";
+        [self.textField setHidden:YES];
+        self.webViewConstraint.constant = -32;
+//        [self webViewConstraintEditor:self.webViewConstraint];
+//        self.textField.text = @" ";
+    } else {
+        [self.textField setHidden:NO];
+        self.webViewConstraint.constant = 0;
     }
 }
-
 
 
 //- (IBAction)onBackButtonPressed:(UIBarButtonItem *)sender {
