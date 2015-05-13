@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation ViewController
@@ -21,6 +23,14 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView {
+    [self.spinner startAnimating];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self.spinner stopAnimating];
 }
 
 @end
