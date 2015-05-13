@@ -42,4 +42,13 @@
     [self.spinner stopAnimating];
 }
 
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    UIAlertView *alert = [UIAlertView new];
+    alert.title = @"Load Failed!";
+    alert.message = error.localizedDescription;
+
+    [alert addButtonWithTitle:@"Dismiss"];
+    [alert show];
+}
+
 @end
