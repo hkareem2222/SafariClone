@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 
@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self goToURLString:@"http://www.google.com"];
+    self.webView.scrollView.delegate = self;
+
 
     
 
@@ -56,6 +58,7 @@
     [self.forwardButton setEnabled:[self.webView canGoForward]];
     [self.spinner stopAnimating];
     NSString *currentURL = self.webView.request.URL.absoluteString;
+    NSString *webTitle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.textField.text = currentURL;
 }
 
@@ -96,6 +99,15 @@
     alert.delegate = self;
     [alert show];
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y >= 50) {
+        self.textField.text = @" ";
+    }
+}
+
+
 
 //- (IBAction)onBackButtonPressed:(UIBarButtonItem *)sender {
 //    if ([self.webView canGoBack]) {
