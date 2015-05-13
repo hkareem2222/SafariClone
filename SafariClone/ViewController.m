@@ -31,6 +31,7 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self goToURLString:textField.text];
+    [textField resignFirstResponder];
 
     return YES;
 }
