@@ -19,17 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *urlString = @"http://www.mobilemakers.co";
+
+    [self goToURLString:@"http://www.mobilemakers.co"];
+}
+
+-(void)goToURLString:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSString *urlString = textField.text;
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
+    [self goToURLString:textField.text];
 
     return YES;
 }
@@ -55,10 +56,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSString *urlString = @"http://www.mobilemakers.co";
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:urlRequest];
+        [self goToURLString:@"http://www.mobilemakers.co"];
     }
 }
 
