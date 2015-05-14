@@ -50,7 +50,8 @@
         [textField resignFirstResponder];
         return YES;
     } else {
-        NSString *updatedUrl = [NSString stringWithFormat:@"https://www.google.com/#q=%@", textField.text];
+        NSString *searchString = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        NSString *updatedUrl = [NSString stringWithFormat:@"https://www.google.com/#q=%@", searchString];
         [self goToURLString:updatedUrl];
         [textField resignFirstResponder];
         return YES;
