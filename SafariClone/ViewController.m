@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BookmarkViewController.h"
 
 @interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewConstraint;
-
+@property NSString *bookmark1;
 @end
 
 @implementation ViewController
@@ -103,15 +104,22 @@
     [self.webView reload];
 }
 - (IBAction)comingSoonButtonPressed:(UIButton *)sender {
+    self.bookmark1 = self.textField.text;
     UIAlertView *alert = [UIAlertView new];
-    alert.title = @"Coming Soon!";
+    alert.title = self.bookmark1;
     [alert addButtonWithTitle:@"Dismiss"];
     alert.delegate = self;
     [alert show];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    BookmarkViewController *bookmarkVC = [segue destinationViewController];
+    bookmarkVC.bookmark1 = self.bookmark1;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    NSLog(@"%f",scrollView.contentOffset.y);
+    NSLog(@"%f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 50) {
         [self.textField setHidden:YES];
         self.webViewConstraint.constant = -32;
@@ -122,6 +130,8 @@
         self.webViewConstraint.constant = 0;
     }
 }
+
+//scroll up show url field
 
 
 //- (IBAction)onBackButtonPressed:(UIBarButtonItem *)sender {

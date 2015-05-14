@@ -14,6 +14,7 @@
 		855496FA1B03A59F001D5CCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 855496F91B03A59F001D5CCB /* Images.xcassets */; };
 		855496FD1B03A59F001D5CCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855496FB1B03A59F001D5CCB /* LaunchScreen.xib */; };
 		855497091B03A59F001D5CCB /* SafariCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 855497081B03A59F001D5CCB /* SafariCloneTests.m */; };
+		858987121B04DA96001BABA5 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 858987111B04DA96001BABA5 /* BookmarkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		855497021B03A59F001D5CCB /* SafariCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafariCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		855497071B03A59F001D5CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		855497081B03A59F001D5CCB /* SafariCloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafariCloneTests.m; sourceTree = "<group>"; };
+		858987101B04DA96001BABA5 /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewController.h; sourceTree = "<group>"; };
+		858987111B04DA96001BABA5 /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				855496F31B03A59F001D5CCB /* ViewController.h */,
 				855496F41B03A59F001D5CCB /* ViewController.m */,
 				855496F61B03A59F001D5CCB /* Main.storyboard */,
+				858987101B04DA96001BABA5 /* BookmarkViewController.h */,
+				858987111B04DA96001BABA5 /* BookmarkViewController.m */,
 				855496F91B03A59F001D5CCB /* Images.xcassets */,
 				855496FB1B03A59F001D5CCB /* LaunchScreen.xib */,
 				855496EC1B03A59F001D5CCB /* Supporting Files */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858987121B04DA96001BABA5 /* BookmarkViewController.m in Sources */,
 				855496F51B03A59F001D5CCB /* ViewController.m in Sources */,
 				855496F21B03A59F001D5CCB /* AppDelegate.m in Sources */,
 				855496EF1B03A59F001D5CCB /* main.m in Sources */,
@@ -416,6 +422,7 @@
 				8554970E1B03A59F001D5CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8554970F1B03A59F001D5CCB /* Build configuration list for PBXNativeTarget "SafariCloneTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				855497111B03A59F001D5CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
